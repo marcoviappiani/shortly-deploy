@@ -9,8 +9,9 @@ module.exports = function(grunt) {
           dist: {
             src: [
               'public/**/*.js',
-              '!public/dist/**/*.js'
-            ],
+              '!public/dist/**/*.js',
+              '!public/lib/**/*.js'
+              ],
             dest: 'public/dist/production.js',
           },
     },
@@ -136,6 +137,12 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('deploy', [
+    'jshint', 
+    'mochaTest',
+    'test',
+    'concat',
+    'uglify',
+    'cssmin'
       // add your production server task here
   ]);
 
